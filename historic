@@ -12,8 +12,43 @@ read a
  
 case $a in
 1.1)
+echo " 𝐀𝐜𝐭𝐨𝐫: 𝐀𝐧𝐲: 𝐄𝐝𝐚𝐭: 𝐏𝐞𝐥·𝐥𝐢́𝐜𝐮𝐥𝐚" > cap.txt
 
+cat oscar_age_male.csv | tail +2  > llista
+
+
+sort -t, -k4 llista > ordenatspernom.txt
+
+
+
+cut -d, -f2 ordenatspernom.txt > any_oscar
+cut -d, -f3 ordenatspernom.txt > edat_oscar
+cut -d'"' -f4 ordenatspernom.txt > peli_oscar
+cut -d'"' -f2 ordenatspernom.txt > actor_oscar
+
+
+
+paste -d: actor_oscar any_oscar edat_oscar peli_oscar > final.txt
+
+
+cat final.txt >> cap.txt
+
+column -s : -t cap.txt
+
+
+
+rm final.txt
+rm any_oscar
+rm edat_oscar
+rm peli_oscar
+rm actor_oscar
+rm ordenatspernom.txt
+rm llista
+rm cap.txt
 ;;
+
+
+
 
 
 1.2)
