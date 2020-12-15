@@ -1,0 +1,22 @@
+#!/bin/bash
+ 
+echo "--------------------------------------------------"
+echo "               Històric d’Oscars"
+echo "-------------------------------------------------- "
+echo "1.1 Mostrar històric d’Oscars a millor actor (alfabètic)."
+echo "1.2 Mostrar històric d’Oscars a millor actriu (edat)"
+echo "1.3 Mostrar històric d’Oscars (actors/actrius)."
+ 
+ 
+read a
+ 
+case $a in
+1.1)
+;;
+1.2)
+;;
+1.3) 
+;;
+*) 
+echo "error";;
+esac
