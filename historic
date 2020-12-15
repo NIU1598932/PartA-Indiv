@@ -46,10 +46,44 @@ rm ordenatspernom.txt
 rm llista
 rm cap.txt
 ;;
+
+
 1.2)
 
+echo " 𝐄𝐝𝐚𝐭: 𝐀𝐜𝐭𝐫𝐢𝐮: 𝐀𝐧𝐲: 𝐏𝐞𝐥·𝐥𝐢́𝐜𝐮𝐥𝐚" > cap.txt
 
- ;;
+cat oscar_age_male.csv | tail +2  > llista
+
+
+sort -t, -n -k3 llista > ordenatsperedat.txt
+
+
+
+cut -d, -f2 ordenatsperedat.txt > any_oscar
+cut -d, -f3 ordenatsperedat.txt > edat_oscar
+cut -d'"' -f4 ordenatsperedat.txt > peli_oscar
+cut -d'"' -f2 ordenatsperedat.txt > actriu_oscar
+
+
+
+paste -d: edat_oscar actriu_oscar any_oscar  peli_oscar > final.txt
+
+
+cat final.txt >> cap.txt
+
+column -s : -t cap.txt
+
+
+
+rm final.txt
+rm any_oscar
+rm edat_oscar
+rm peli_oscar
+rm actriu_oscar
+rm ordenatsperedat.txt
+rm llista
+rm cap.txt
+
 1.3) 
 ;;
 *) 
