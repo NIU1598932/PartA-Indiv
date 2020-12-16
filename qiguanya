@@ -1,0 +1,28 @@
+#!/bin/bash
+ 
+ 
+echo --------------------------------------------------
+echo			Qui va guanyar ...?
+echo --------------------------------------------------
+echo 2.1 Mostrar l’actor i l’actriu que van guanyar un any determinat. 
+echo 2.2 Mostrar els Oscars a millor actriu guanyats per una actriu determinada. 
+echo 2.3 Mostrar els Oscars a millor actriu o actor que ha obtingut una pel·lícula determinada.
+ 
+echo ""
+echo Escollir opció
+read opcio
+ 
+case $opcio in
+ 
+ 1)
+ ;;
+ 
+ 2)
+;;
+ 
+ 
+3)
+;;
+*);;
+ 
+ esac 
