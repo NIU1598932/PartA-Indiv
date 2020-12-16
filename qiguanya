@@ -50,13 +50,51 @@ case $opcio in
  echo "Pel·lícula: $peliculafemale"
  echo " "
  echo ""
+
  ;;
 
  
  2.2)
+
+ echo Introdueix un nom actriu:
+ 
+ 
+ read actriu
+ 
+ageFemale=`tail +2 oscar_age_female.csv | grep -i "$actriu"|cut -d, -f3 >EDATGUANYADORES`
+ 
+year=`tail +2 oscar_age_female.csv | grep -i "$actriu"|cut -d, -f2 >ANYVICTORIA`
+ 
+movie=`tail +2 oscar_age_female.csv | grep -i "$actriu"|cut -d'"' -f4 >PELÍCUL·LA`
+ 
+ 
+guanyadoraoscar=`paste EDATGUANYADORES ANYVICTORIA > EDATIANYS`
+guanyadoraoscar2=`paste EDATIANYS PELÍCUL·LA > FINAL`
+ 
+echo Edat> Edat
+echo Any> Any
+echo Pel·lícula> Pel·lícula
+ 
+EdatAny=`paste Edat Any > EdatAny`
+ 
+
+FinalTitol=`paste EdatAny Pel·lícula>TITOL`
+ 
+echo --------------------------->>TITOL
+ 
+ 
+ echo ""
+ echo "Oscars a millor actriu obtinguts per: $actriu" 
+ echo ""
+ 
+cat TITOL	 
+ 
+echo ""
+ 
+cat FINAL
+
 ;;
- 
- 
+
 2.3)
 ;;
 *);;
