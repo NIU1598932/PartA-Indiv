@@ -1,0 +1,125 @@
+#!/bin/bash
+ #enunciat
+echo "--------------------------------------------------"
+echo "               Històric d’Oscars"
+echo "-------------------------------------------------- "
+echo "1.1 Mostrar històric d’Oscars a millor actor (alfabètic)."
+echo "1.2 Mostrar històric d’Oscars a millor actriu (edat)"
+echo "1.3 Mostrar històric d’Oscars (actors/actrius)."
+ 
+ #llegim valor introduit per pantalla
+read a
+ case $a in
+1.1)
+echo " 𝐀𝐜𝐭𝐨𝐫: 𝐀𝐧𝐲: 𝐄𝐝𝐚𝐭: 𝐏𝐞𝐥·𝐥𝐢́𝐜𝐮𝐥𝐚" > cap.txt
+#pasem valors a una llista
+cat oscar_age_male.csv | tail +2  > llista
+ 
+#ordenem per nom
+sort -t, -k4 llista > ordenatspernom.txt
+ 
+ 
+#agafem els camps
+cut -d, -f2 ordenatspernom.txt > any_oscar
+cut -d, -f3 ordenatspernom.txt > edat_oscar
+cut -d'"' -f4 ordenatspernom.txt > peli_oscar
+cut -d'"' -f2 ordenatspernom.txt > actor_oscar
+ 
+ 
+#ho pasem a un fitxer de text
+paste -d: actor_oscar any_oscar edat_oscar peli_oscar > final.txt
+ 
+#juntem tot
+cat final.txt >> cap.txt
+ 
+#usem column per deixar-ho quadrat
+column -s : -t cap.txt
+ 
+ 
+#eliminem fitxers innecesaris
+rm final.txt
+rm any_oscar
+rm edat_oscar
+rm peli_oscar
+rm actor_oscar
+rm ordenatspernom.txt
+rm llista
+rm cap.txt
+;;
+ 
+ 
+1.2)
+# funcionament igual a l'exercici anterior respecte del sort
+echo " 𝐄𝐝𝐚𝐭: 𝐀𝐜𝐭𝐫𝐢𝐮: 𝐀𝐧𝐲: 𝐏𝐞𝐥·𝐥𝐢́𝐜𝐮𝐥𝐚" > cap.txt
+ 
+cat oscar_age_male.csv | tail +2  > llista
+ 
+#Ara ordenem per edats, no per nom
+sort -t, -n -k3 llista > ordenatsperedat.txt
+ 
+ 
+ 
+cut -d, -f2 ordenatsperedat.txt > any_oscar
+cut -d, -f3 ordenatsperedat.txt > edat_oscar
+cut -d'"' -f4 ordenatsperedat.txt > peli_oscar
+cut -d'"' -f2 ordenatsperedat.txt > actriu_oscar
+ 
+ 
+ 
+paste -d: edat_oscar actriu_oscar any_oscar  peli_oscar > final.txt
+ 
+ 
+cat final.txt >> cap.txt
+ 
+column -s : -t cap.txt
+ 
+ 
+ 
+rm final.txt
+rm any_oscar
+rm edat_oscar
+rm peli_oscar
+rm actriu_oscar
+rm ordenatsperedat.txt
+rm llista
+rm cap.txt
+ 
+ 
+ ;;
+ 
+ 
+1.3)
+ 
+i=2
+#agafem maxim de linies dels fitxers
+max=`wc -l < oscar_age_male.csv`
+ 
+#fem un bucle per agafar cada camp
+while [ $i -lt $max ]     
+do
+any=`cat oscar_age_male.csv | tail +1 |sort -k2 -t, | head -$i | tail -1| cut -d, -f2`
+actor=`cat oscar_age_male.csv | tail +1 |sort -k2 -t, | head -$i | tail -1| cut -d'"' -f2`
+edat=`cat oscar_age_male.csv | tail +1 |sort -k2 -t, | head -$i | tail -1| cut -d, -f3`
+pelicula=`cat oscar_age_male.csv | tail +1 |sort -k2 -t, | head -$i | tail -1| cut -d'"' -f4`
+ 
+actriu=`cat oscar_age_female.csv | tail +1 |sort -k2 -t, | head -$i | tail -1| cut -d'"' -f2`
+edat2=`cat oscar_age_female.csv | tail +1 |sort -k2 -t, | head -$i | tail -1| cut -d, -f3`
+pelicula2=`cat oscar_age_female.csv | tail +1 |sort -k2 -t, | head -$i | tail -1| cut -d'"' -f4`
+ 
+#mostrem cada camp y seguim amb el bucle
+ 
+ 
+echo any: $any
+echo actor: $actor
+echo edat: $edat
+echo pel·licula: $pelicula
+echo actriu: $actriu
+echo edat: $edat2
+echo pel·licula: $pelicula2
+echo -------------------------------------------------------------
+let i=i+1;
+done
+ ;;
+*) 
+echo "error";;
+esac

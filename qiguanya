@@ -1,6 +1,6 @@
 #!/bin/bash
  
- 
+ #Enunciat
 echo --------------------------------------------------
 echo			Qui va guanyar ...?
 echo --------------------------------------------------
@@ -10,28 +10,31 @@ echo 2.3 Mostrar els Oscars a millor actriu o actor que ha obtingut una pel·lí
  
 echo ""
 echo Escollir opció
+#llegim opcio de l'usuari
 read opcio
- 
+ #fem un case que entra a una opcio o altre segons el que hagi escollit l'usuari
 case $opcio in
  
  2.1)
   echo Selecciona any: 
- 
+ #llegim un any
  read any
  
+ #agafem d'aquest any nom edat i pelicula dels homes
  male=`tail +2 oscar_age_male.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d'"' -f2 ` 
  
  
  agemale=`tail +2 oscar_age_male.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d, -f3 `
  
  peliculamale=`tail +2 oscar_age_male.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d'"' -f4`
- 
+ #fem el mateix per les dones
  female=`tail +2 oscar_age_female.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d'"' -f2 `
  
   agefemale=`tail +2 oscar_age_female.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d, -f3 `
  
  peliculafemale=`tail +2 oscar_age_female.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d'"' -f4`
  
+ #mostrem dades agafades
  echo ""
  echo "Guanyadors any $any"
  echo ""
@@ -57,17 +60,17 @@ case $opcio in
  2.2)
 
  echo Introdueix un nom actriu:
- 
+#usuari buusca una actriu per nom 
  
  read actriu
- 
+ #agafem els camps de l'edat , any i nom de la pelicula
 ageFemale=`tail +2 oscar_age_female.csv | grep -i "$actriu"|cut -d, -f3 >EDATGUANYADORES`
 
 year=`tail +2 oscar_age_female.csv | grep -i "$actriu"|cut -d, -f2 >ANYVICTORIA`
  
 movie=`tail +2 oscar_age_female.csv | grep -i "$actriu"|cut -d'"' -f4 >PELÍCUL·LA`
  
- 
+ # ho fiquem a un fitxer per si hi han camps repetits
 guanyadoraoscar=`paste EDATGUANYADORES ANYVICTORIA > EDATIANYS`
 guanyadoraoscar2=`paste EDATIANYS PELÍCUL·LA > FINAL`
  
@@ -82,7 +85,7 @@ FinalTitol=`paste EdatAny Pel·lícula>TITOL`
  
 echo --------------------------->>TITOL
  
- 
+ #Ara mostrem els resultats amb cat TITOl i FINAL
  echo ""
  echo "Oscars a millor actriu obtinguts per: $actriu" 
  echo ""
@@ -97,9 +100,10 @@ cat FINAL
 
 
 2.3)
+#usuari busca pelicula
 echo Introduiex pel·lícula:
 read peli
- 
+ #agafem dades
 Any=`tail +2 oscar_age_female.csv | grep -i "$peli" | cut -d, -f2`
 any=`tail +2 oscar_age_male.csv | grep -i "$peli" | cut -d, -f2`
  
@@ -108,6 +112,8 @@ actor=`tail +2 oscar_age_male.csv | grep -i "$peli" | cut -d '"' -f2`
 edatfemale=`tail +2 oscar_age_female.csv | grep -i "$peli" | cut -d, -f3`
 edatmale=`tail +2 oscar_age_male.csv | grep -i "$peli" | cut -d, -f3`
  
+ 
+ #mostem dades dels actors segons peli
 echo ""
 echo Oscars a millor actriu i actor obtinguts per: 
 echo $peli
