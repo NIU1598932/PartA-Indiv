@@ -14,15 +14,36 @@ read opcio
  
 case $opcio in
  
- 1)
+ 2.1)
  ;;
  
- 2)
+ 2.2)
 ;;
  
  
-3)
+2.3)
+echo Introduiex pel·lícula:
+read peli
+ 
+Any=`tail +2 oscar_age_female.csv | grep -i "$peli" | cut -d, -f2`
+any=`tail +2 oscar_age_male.csv | grep -i "$peli" | cut -d, -f2`
+ 
+actriu=`tail +2 oscar_age_female.csv | grep -i "$peli" | cut -d '"' -f2`
+actor=`tail +2 oscar_age_male.csv | grep -i "$peli" | cut -d '"' -f2`
+edatfemale=`tail +2 oscar_age_female.csv | grep -i "$peli" | cut -d, -f3`
+edatmale=`tail +2 oscar_age_male.csv | grep -i "$peli" | cut -d, -f3`
+ 
+echo ""
+echo Oscars a millor actriu i actor obtinguts per: 
+echo $peli
+echo Any: $Any $any
+echo ----------------------------------------------
+echo actriu: $actriu
+echo edat: $edatfemale
+echo actor: $actor
+echo edat: $edatmale
 ;;
+ 
 *);;
  
  esac 
