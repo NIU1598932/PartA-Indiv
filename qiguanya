@@ -63,9 +63,6 @@ case $opcio in
  
 ageFemale=`tail +2 oscar_age_female.csv | grep -i "$actriu"|cut -d, -f3 >EDATGUANYADORES`
 
-;;
-
- 
 year=`tail +2 oscar_age_female.csv | grep -i "$actriu"|cut -d, -f2 >ANYVICTORIA`
  
 movie=`tail +2 oscar_age_female.csv | grep -i "$actriu"|cut -d'"' -f4 >PELÍCUL·LA`
