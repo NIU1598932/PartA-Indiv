@@ -14,14 +14,50 @@ read opcio
  
 case $opcio in
  
- 1)
- ;;
+ 2.1)
+  echo Selecciona any: 
  
- 2)
+ read any
+ 
+ male=`tail +2 oscar_age_male.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d'"' -f2 ` 
+ 
+ 
+ agemale=`tail +2 oscar_age_male.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d, -f3 `
+ 
+ peliculamale=`tail +2 oscar_age_male.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d'"' -f4`
+ 
+ female=`tail +2 oscar_age_female.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d'"' -f2 `
+ 
+  agefemale=`tail +2 oscar_age_female.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d, -f3 `
+ 
+ peliculafemale=`tail +2 oscar_age_female.csv | grep "^[a-z,A-Z,0-9, ]*, $any" | cut -d'"' -f4`
+ 
+ echo ""
+ echo "Guanyadors any $any"
+ echo ""
+ echo "Oscar a millor actor: $male"
+ echo ""
+ echo "Edat: $agemale"
+ echo ""
+ echo "Pel·lícula: $peliculamale"
+ echo " "
+ echo --------------------------------------------------
+ echo ""
+ echo "Oscar a millor actriu: $female"
+ echo ""
+ echo "Edat: $agefemale"
+ echo ""
+ echo "Pel·lícula: $peliculafemale"
+ echo " "
+ echo ""
+ ;;
+
+ 
+ 2.2)
 ;;
  
  
-3)
+2.3)
 ;;
 *);;
  
