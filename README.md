@@ -29,18 +29,18 @@ Explicació de com executar el codi del repositori:
 -------------------------------------------------
 De moment només hi han 3 parts:
 MENÚ: Per utilitzar el menú només s'ha de introduir el numero de la opció que es vulgui executar
-OPCIO-1:
-OPCIO-2:
+OPCIO-1:Simplement has de posar 1.1, 1.2, 1.3 depenent de la opcio que vulguis executar
+OPCIO-2:Igual que l'anterior pero aqui hauras de ficar un valor com actriu, pelicula o any per rebre la informació que vols.
 
 
 
 Llista de les comandes utilitzades en la practica amb una breu explicació de que fa cadascuna d'aquestes:
 ---------------------------------------------------------------------------------------------------------
 Comandes de Git:
--merge:
--clone:
--checkout:
--branch:
+-merge:Juntes la rama que escullis amb la qual on ets tu
+-clone:Clones el repositori desde github
+-checkout:Cambies de branca en la que estas situat
+-branch:Serveix per veure en quina branca et trobes o per crear una altre nova
 
 Comandes de Scripts:
 -grep: Agafa una fila on hi hagin els valors demanats
